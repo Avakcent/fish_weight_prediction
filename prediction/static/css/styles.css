@@ -1,0 +1,82 @@
+/* Базовые стили */
+body {
+    padding-top: 20px;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 1200px;
+    position: relative; /* Для позиционирования model-card */
+    padding-top: 80px; /* Отступ для model-card */
+}
+
+/* Карточка параметров модели */
+.model-card {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    width: 260px;
+    z-index: 100;
+}
+
+.model-header {
+    color: #3a7bd5;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+}
+
+.metric-item {
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+}
+
+.metric-value {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+/* Кнопка прогноза */
+.btn-predict {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    border: none;
+    transition: all 0.3s;
+}
+
+.btn-predict:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Таблица */
+.table-responsive {
+    margin-top: 20px;
+}
+
+.table th {
+    white-space: nowrap;
+}
+
+.predicted-weight {
+    font-weight: bold;
+    color: #28a745;
+}
+
+/* Форма добавления */
+.card {
+    margin-bottom: 20px;
+    border: none;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.card-title {
+    font-size: 1.1rem;
+    color: #333;
+}

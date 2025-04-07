@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Загрузка файла для прогнозирования</h2>
+            
+            <form method="post" enctype="multipart/form-data" class="mt-4">
+                {% csrf_token %}
+                <div class="mb-3">
+                    {{ form.file.label_tag }}
+                    {{ form.file }}
+                    {% if form.file.errors %}
+                        <div class="text-danger">{{ form.file.errors }}</div>
+                    {% endif %}
+                </div>
+                
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-upload"></i> Загрузить файл
+                </button>
+                <a href="{% url 'home' %}" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> На главную
+                </a>
+            </form>
+            
+            {% if error %}
+                <div class="alert alert-danger mt-3">
+                    {{ error }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="card mt-4">
+        <div class="card-body">
+            <h5 class="card-title">Требования к файлу:</h5>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Формат: Excel (.xlsx или .xls)</li>
+                <li class="list-group-item">Обязательные колонки: Species, Length1, Length2, Length3, Height, Width</li>
+                <li class="list-group-item">Допустимые виды рыб: Bream, Parkki, Perch, Pike, Roach, Smelt, Whitefish</li>
+                <li class="list-group-item">Все значения размеров должны быть положительными числами</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

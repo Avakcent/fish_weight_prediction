@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Результаты прогнозирования</h2>
+    
+    <div class="table-responsive mt-4">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Вид</th>
+                    <th>Длина1</th>
+                    <th>Длина2</th>
+                    <th>Длина3</th>
+                    <th>Высота</th>
+                    <th>Ширина</th>
+                    <th>Прогнозируемый вес</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in results %}
+                <tr>
+                    <td>{{ row.Species }}</td>
+                    <td>{{ row.Length1 }}</td>
+                    <td>{{ row.Length2 }}</td>
+                    <td>{{ row.Length3 }}</td>
+                    <td>{{ row.Height }}</td>
+                    <td>{{ row.Width }}</td>
+                    <td class="fw-bold">{{ row.PredictedWeight }} г</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    <form method="post" class="mt-4">
+        {% csrf_token %}
+        <button type="submit" name="download" class="btn btn-primary">
+            <i class="fas fa-download"></i> Скачать результаты
+        </button>
+        <a href="{% url 'upload' %}" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Вернуться
+        </a>
+    </form>
+</div>
+{% endblock %}
